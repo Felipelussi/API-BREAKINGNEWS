@@ -1,23 +1,14 @@
-const express = require('express');
+const express = require ('express');
 const app = express();
 
 const userRoute = require('./src/routes/user.route');
 
-app.use('/soma', userRoute)
+const port = 3000;
 
+app.use(express.json());
 
+app.use('/user', userRoute)
 
-//ROTA
-// method HTTP - CRUD (CREATE, READ, UPTDATE, DELETE)
-  //GET - pega uma info
-  //POST - Cria uma info
-  //PUT - altera toda a infos
-  //PATH - altera parte da info
-  //DELETE - apaga uma info
-
-// Name - Um identificador da rota
-
-// Function (calback) - Responsável por enxecutar algum comando
 
 app.get('/home',  (req, res) => {
 
@@ -29,4 +20,4 @@ app.get('/home',  (req, res) => {
 
 
 
-app.listen(3000);
+app.listen(port,() => console.log(`Servidor rodando na porta ${port}`));
