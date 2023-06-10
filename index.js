@@ -1,11 +1,13 @@
-/* const express = require("express");
-const userRoute = require("./src/routes/user.route");
-const conectDatabase = require("./src/Database/db"); */
 
 import express from "express";
 import conectDatabase from "./src/database/db.js"
-import userRoute from "./src/routes/user.route.js"
 import dotenv from "dotenv";
+
+import userRoute from "./src/routes/user.route.js"
+import authRoute from "./src/routes/auth.route.js"
+
+
+
 dotenv.config();
 
 
@@ -17,6 +19,7 @@ conectDatabase();
 app.use(express.json());
 
 app.use("/user", userRoute);
+app.use("/auth", authRoute)
 
 app.get("/home", (req, res) => {
   const soma = 1 + 1;
